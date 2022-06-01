@@ -8,7 +8,6 @@ from telethon import connection
 from datetime import date, datetime 
 # Class to work with channel
 from telethon.tl.functions.messages import GetHistoryRequest
-from telethon.errors import SessionPasswordNeededError
 
 # Add logging
 logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s',
@@ -21,6 +20,8 @@ config.read('../config.ini')
 api_id = config['Telegram']['api_id']
 api_hash = config['Telegram']['api_hash']
 username = config['Telegram']['username']
+phone = config['Telegram']['phone']
+bot_token = config['Telegram']['bot_token']
 # Grabber parameters
 offset_msg = int(config['Grabber']['offset_msg'])
 limit_msg = int(config['Grabber']['limit_msg'])
@@ -28,15 +29,8 @@ total_count_limit = int(config['Grabber']['total_count_limit'])
 
 # TG API client
 client = TelegramClient('../logs/' + username, api_id, api_hash)
-client.start()
-
-# # Ensure you're authorized
-# if not client.is_user_authorized():
-#     client.send_code_request(phone)
-#     try:
-#         client.sign_in(phone, input('Enter the code: '))
-#     except SessionPasswordNeededError:
-#         client.sign_in(password=input('Password: '))
+client.start(phone=phone)
+# client.log_out()
 
 
 async def dump_all_messages(channel, channel_name, out_file_name, offset_msg=0, limit_msg=100, total_count_limit=100):
@@ -109,5 +103,3 @@ async def main():
 
 with client:
     client.loop.run_until_complete(main())
-
-
