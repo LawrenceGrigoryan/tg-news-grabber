@@ -5,3 +5,4 @@ https://docs.telethon.dev/en/stable/
 https://mastergroosha.github.io/telegram-tutorial/docs/pyTelegramBotAPI/lesson_00/
 https://github.com/eternnoir/pyTelegramBotAPI#getting-started
 https://github.com/python-telegram-bot/python-telegram-bot
+https://lonami.dev/blog/asyncio/

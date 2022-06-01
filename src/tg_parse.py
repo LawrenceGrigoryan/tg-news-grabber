@@ -4,15 +4,18 @@ import logging
 # import argparse
 # Telethon API
 from telethon.sync import TelegramClient
-from telethon import connection
-from datetime import date, datetime 
+from datetime import datetime 
 # Class to work with channel
 from telethon.tl.functions.messages import GetHistoryRequest
 
 # Add logging
-logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s',
-                    level=logging.WARNING)
+logging.basicConfig(format='%(asctime)s %(message)s',
+                    datefmt='%m/%d/%Y %I:%M:%S %p',
+                    filename='../logs/tg_parse.log',
+                    filemode='w',
+                    level=logging.DEBUG)
 
+logging.info('Read config file')
 # Reading config 
 config = configparser.ConfigParser()
 config.read('../config.ini')
@@ -27,31 +30,31 @@ offset_msg = int(config['Grabber']['offset_msg'])
 limit_msg = int(config['Grabber']['limit_msg'])
 total_count_limit = int(config['Grabber']['total_count_limit'])
 
+logging.info('Create a telegram client')
 # TG API client
 client = TelegramClient('../logs/' + username, api_id, api_hash)
 client.start(phone=phone)
 # client.log_out()
 
 
+class DateTimeEncoder(json.JSONEncoder):
+    """
+    To serialize dates to JSON
+    """
+    def default(self, o):
+        if isinstance(o, datetime):
+            return o.isoformat()
+        if isinstance(o, bytes):
+            return list(o)
+        return json.JSONEncoder.default(self, o)
+
+        
 async def dump_all_messages(channel, channel_name, out_file_name, offset_msg=0, limit_msg=100, total_count_limit=100):
     """
     Write messages from channel to a json file
     """
     all_messages = []
     total_messages = 0
-
-
-    class DateTimeEncoder(json.JSONEncoder):
-        """
-        To serialize dates to JSON
-        """
-        def default(self, o):
-            if isinstance(o, datetime):
-                return o.isoformat()
-            if isinstance(o, bytes):
-                return list(o)
-            return json.JSONEncoder.default(self, o)
-    
     while True:
         history = await client(GetHistoryRequest(
             peer=channel,
@@ -101,5 +104,7 @@ async def main():
         await dump_all_messages(channel, channel_name=channel_name, out_file_name=channel_name + '.json', 
                                 offset_msg=offset_msg, limit_msg=limit_msg, total_count_limit=total_count_limit)
 
+
+logging.info('Run channel message grabber function')
 with client:
     client.loop.run_until_complete(main())
