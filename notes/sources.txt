@@ -1,0 +1,7 @@
+https://proglib.io/p/pishem-prostoy-grabber-dlya-telegram-chatov-na-python-2019-11-06
+https://python.plainenglish.io/telegram-channel-listener-with-python-8176ebe3c89b
+https://betterprogramming.pub/how-to-get-data-from-telegram-82af55268a4b
+https://docs.telethon.dev/en/stable/
+https://mastergroosha.github.io/telegram-tutorial/docs/pyTelegramBotAPI/lesson_00/
+https://github.com/eternnoir/pyTelegramBotAPI#getting-started
+https://github.com/python-telegram-bot/python-telegram-bot
