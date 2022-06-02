@@ -6,3 +6,6 @@ https://mastergroosha.github.io/telegram-tutorial/docs/pyTelegramBotAPI/lesson_0
 https://github.com/eternnoir/pyTelegramBotAPI#getting-started
 https://github.com/python-telegram-bot/python-telegram-bot
 https://lonami.dev/blog/asyncio/
+https://www.danielemaltese.com/posts/web-scarper-telegram-bot-python/
+https://docs.pyrogram.org/
+https://newscatcherapi.com/blog/python-web-scraping-libraries-to-mine-news-data
