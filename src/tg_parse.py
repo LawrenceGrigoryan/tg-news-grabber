@@ -1,10 +1,10 @@
 import configparser
+from datetime import datetime
 import json 
 import logging
 # import argparse
 # Telethon API
 from telethon.sync import TelegramClient
-from datetime import datetime 
 # Class to work with channel
 from telethon.tl.functions.messages import GetHistoryRequest
 
