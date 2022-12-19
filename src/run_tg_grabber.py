@@ -1,36 +1,35 @@
-import configparser
 from datetime import datetime
 import json 
 import logging
 # import argparse
+
+from omegaconf import OmegaConf
 # Telethon API
 from telethon.sync import TelegramClient
 # Class to work with channel
 from telethon.tl.functions.messages import GetHistoryRequest
 
+from utils import getLogger
+
+
 # Add logging
-logging.basicConfig(format='%(asctime)s %(message)s',
-                    datefmt='%m/%d/%Y %I:%M:%S %p',
-                    filename='../logs/tg_parse.log',
-                    filemode='w',
-                    level=logging.DEBUG)
+logger = getLogger(__name__, file_name='../logs/tg_grabber.log')
 
-logging.info('Read config file')
+logger.info('Read config file')
 # Reading config 
-config = configparser.ConfigParser()
-config.read('../config.ini')
+config = OmegaConf.load('../config.yaml')
 # TG constants
-api_id = config['Telegram']['api_id']
-api_hash = config['Telegram']['api_hash']
-username = config['Telegram']['username']
-phone = config['Telegram']['phone']
-bot_token = config['Telegram']['bot_token']
+api_id = config.telegram.api_id
+api_hash = config.telegram.api_hash
+username = config.telegram.username
+phone = config.telegram.phone
+bot_token = config.telegram.bot_token
 # Grabber parameters
-offset_msg = int(config['Grabber']['offset_msg'])
-limit_msg = int(config['Grabber']['limit_msg'])
-total_count_limit = int(config['Grabber']['total_count_limit'])
+offset_msg = config.grabber.offset_msg
+limit_msg = config.grabber.limit_msg
+total_count_limit = config.grabber.total_count_limit
 
-logging.info('Create a telegram client')
+logger.info('Create a telegram client')
 # TG API client
 client = TelegramClient('../logs/' + username, api_id, api_hash)
 client.start(phone=phone)
@@ -105,6 +104,6 @@ async def main():
                                 offset_msg=offset_msg, limit_msg=limit_msg, total_count_limit=total_count_limit)
 
 
-logging.info('Run channel message grabber function')
+logger.info('Run channel message grabber function')
 with client:
     client.loop.run_until_complete(main())

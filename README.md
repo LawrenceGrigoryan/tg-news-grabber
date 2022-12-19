@@ -7,3 +7,5 @@ sudo bash - get root access
 
 aws s3 cp output/bbcrussian.json s3://tg_news/bbcrussian/test.json --endpoint-url https://hb.bizmrg.com
 
+mysql --host=146.185.242.115 --user=user --password --database=gpb_news_external  # connect to mysql via command line
+source create_table.sql # run .sql scipt in current connection to database

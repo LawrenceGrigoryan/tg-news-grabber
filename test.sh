@@ -1,2 +1,2 @@
 cd src;
-python3 tg_parse.py
+python3 run_tg_grabber.py
