@@ -1,5 +1,7 @@
 .venv
+*.session
 *.ini
 *.yaml
 *.session
 .ipynb_checkpoints
+__pycache__

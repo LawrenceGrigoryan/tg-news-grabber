@@ -3,6 +3,7 @@ import json
 import logging
 # import argparse
 
+import pandas as pd
 from omegaconf import OmegaConf
 # Telethon API
 from telethon.sync import TelegramClient
@@ -10,14 +11,16 @@ from telethon.sync import TelegramClient
 from telethon.tl.functions.messages import GetHistoryRequest
 
 from utils import getLogger
+from connect_sql import save_table_mysql
 
 
 # Add logging
 logger = getLogger(__name__, file_name='../logs/tg_grabber.log')
 
-logger.info('Read config file')
-# Reading config 
+logger.info('Read config files')
 config = OmegaConf.load('../config.yaml')
+database_config = OmegaConf.load('../database.yaml')
+
 # TG constants
 api_id = config.telegram.api_id
 api_hash = config.telegram.api_hash
@@ -88,7 +91,13 @@ async def dump_all_messages(channel, channel_name, out_file_name, offset_msg=0, 
         if total_count_limit != 0 and total_messages >= total_count_limit:
             break
 
+    logger.info('Saving data to database')
     with open('../output/' + out_file_name, 'w', encoding='utf-8') as out_file:
+        # Create dataframe from news records
+        news_df = pd.DataFrame.from_records(all_messages)
+        # Save dataframe to MySQL table
+        save_table_mysql(df=news_df, conf=database_config)
+        # Save as json locally
         json.dump(all_messages, out_file, ensure_ascii=False, cls=DateTimeEncoder)
 
 

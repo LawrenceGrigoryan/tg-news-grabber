@@ -1,7 +1,22 @@
-"""Common utils for python"""
+"""Common utils for python scripts"""
+import omegaconf
 import logging
 import sys 
 from typing import Optional
+
+
+def getConfig(path: str) -> omegaconf.dictconfig.DictConfig:
+    """
+    Read yaml config
+
+    Args:
+        path (str): Path to config file
+
+    Returns:
+        omegaconf.dictconfig.DictConfig: config object
+    """
+    config = omegaconf.OmegaConf.load(path)
+    return config
 
 
 def getLogger(
