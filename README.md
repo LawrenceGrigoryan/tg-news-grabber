@@ -1,6 +1,6 @@
 # Telegram news grabber
 
-Allows to grab any post from any public channel and put it into a database
+Allows to grab any post from any public channel and collect it in MySQL database
 
 sudo chown <USERNAME> -R path/to/folder - let vs code write and delete files
 sudo bash - get root access
