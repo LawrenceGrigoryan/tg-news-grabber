@@ -1,0 +1,7 @@
+.venv
+notebooks
+notes
+git.yaml
+README.md
+mysql_console.sh
+__pycache__

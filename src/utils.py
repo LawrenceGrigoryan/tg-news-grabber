@@ -1,8 +1,8 @@
 """Common utils for python scripts"""
-import omegaconf
 import logging
 import sys 
 from typing import Optional
+import omegaconf
 
 
 def getConfig(path: str) -> omegaconf.dictconfig.DictConfig:

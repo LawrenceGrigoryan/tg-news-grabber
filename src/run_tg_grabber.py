@@ -1,6 +1,5 @@
 from datetime import datetime
-import json 
-import logging
+import json
 # import argparse
 
 import pandas as pd
