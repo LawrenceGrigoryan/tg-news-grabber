@@ -1,14 +1,16 @@
 """Connection utilities for MySQL server"""
 from typing import NoReturn
-import omegaconf
 import sqlalchemy
 import pandas as pd
-# from mysql.connector import connect, Error
 
 
 def save_table_mysql(
         df: pd.DataFrame,
-        conf: omegaconf.dictconfig.DictConfig,
+        user: str,
+        password: str,
+        host: str,
+        database: str,
+        table_name: str
         ) -> NoReturn:
     """
     Saves pandas dataframe to the given table
@@ -19,11 +21,11 @@ def save_table_mysql(
     """
     try:
         connection_str = 'mysql+mysqlconnector://{}:{}@{}/{}'. \
-            format(conf.user, conf.password, conf.host, conf.database)
+            format(user, password, host, database)
         connection = sqlalchemy.create_engine(connection_str)
         df.to_sql(
             con=connection, 
-            name=conf.table_name, 
+            name=table_name, 
             if_exists='append', 
             index=False
         )

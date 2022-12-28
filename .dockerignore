@@ -1,7 +1,8 @@
 .venv
+.vscode
 notebooks
 notes
 git.yaml
 README.md
-mysql_console.sh
 __pycache__
+.env

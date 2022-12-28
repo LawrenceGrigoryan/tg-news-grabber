@@ -1,45 +1,54 @@
 from datetime import datetime, timedelta
-from typing import NoReturn
+from typing import NoReturn, Union
 import json
-import argparse
+import os
 
 import pandas as pd
 from omegaconf import OmegaConf
-from telethon.errors import SessionPasswordNeededError
+from dotenv import load_dotenv
+from telethon import hints
 from telethon.sync import TelegramClient
 from telethon.tl.functions.messages import GetHistoryRequest
 
 from utils import getLogger
 from connect_sql import save_table_mysql
+import constants
 
+# Load environment variables from .env
+load_dotenv()
+
+# Reading constants
+input_path = constants.INPUT_PATH
+logs_path = constants.LOGS_PATH
+logs_file = constants.LOGS_FILE
+config_path = constants.CONFIG_PATH
 
 # Add logging
-logger = getLogger(__name__, file_name='../logs/tg_grabber.log')
+logger = getLogger(__name__, file_name=logs_file)
 
-logger.info('Read config files')
-config = OmegaConf.load('../config.yaml')
-database_config = OmegaConf.load('../database.yaml')
+logger.info("Reading configuration")
+config = OmegaConf.load(config_path)
 
-# TG constants
-api_id = config.telegram.api_id
-api_hash = config.telegram.api_hash
-username = config.telegram.username
-phone = config.telegram.phone
-bot_token = config.telegram.bot_token
-# Grabber parameters
-limit_msg = config.grabber.limit_msg
+logger.info("Reading connection params from environment variables")
+# Telegram
+api_id = os.getenv("API_ID")
+api_hash = os.getenv("API_HASH")
+username = os.getenv("USERNAME")
+phone = os.getenv("PHONE")
+bot_token = os.getenv("BOT_TOKEN")
+# Database
+mysql_host = os.getenv("MYSQL_HOST")
+mysql_user = os.getenv("MYSQL_USER")
+mysql_password = os.getenv("MYSQL_PASSWORD")
 
-logger.info('Create a telegram client')
-# TG API client
-client = TelegramClient('../logs/' + username, api_id, api_hash)
-client.start(phone=phone)
-# client = TelegramClient('../logs/' + username, api_id, api_hash)
-# client.start(bot_token=bot_token)
+logger.info("Creating a telegram client")
+client = TelegramClient(logs_path + username, api_id, api_hash)
+client.start(bot_token=bot_token)
 
 
 class DateTimeEncoder(json.JSONEncoder):
     """
-    To serialize dates to JSON
+    Class serialize dates to JSON
     """
     def default(self, o) -> json.JSONEncoder.default:
         if isinstance(o, datetime):
@@ -50,90 +59,119 @@ class DateTimeEncoder(json.JSONEncoder):
 
 
 async def dump_all_messages(
-        channel: str, 
-        channel_name: str,
+        channel: hints.Entity,
         out_file_name: str,
-        limit_msg: int
+        limit_msg: int,
+        channel_name: Union[None, str] = None,
+        channel_url: Union[None, str] = None
         ) -> NoReturn:
     """
-    Write messages from channel to a json file
+    The function grabs all news from the given input channel
+    from yesterday.
+    The function is supposed to run on everyday schedule in a Docker container
+    using crontab.
+
+    Args:
+        channel (hints.Entity): Telethon channel object.
+        out_file_name (str): File to save grabbed news.
+        limit_msg (int): Maximum number of messages to receive.
+        channel_name (Union[None, str], optional): Channel name. Defaults to None.
+        channel_url (Union[None, str], optional): Channel url. Defaults to None.
+
+    Returns:
+        NoReturn
     """
-    # target_date = (datetime.today() + timedelta(hours=3)).date()
-    target_date = datetime.today().date()
-    date_before = target_date - timedelta(days=2)
-    date_before = datetime(
-        date_before.year, 
-        date_before.month, 
-        date_before.day
+    # Get dates to filter out some news
+    current_date = (datetime.today() + timedelta(hours=3)).date()
+    date_start = current_date - timedelta(days=1)
+    date_start = datetime(
+        date_start.year,
+        date_start.month, 
+        date_start.day
     )
     all_messages = []
     while True:
         history = await client(GetHistoryRequest(
             peer=channel,
             offset_id=0,
-            offset_date=target_date,
+            offset_date=current_date,
             add_offset=0,
             limit=limit_msg,
             max_id=0,
             min_id=0,
-            hash=0,
+            hash=0
         ))
         if not history.messages:
             break
-
+        
+        # Get messages until unrequired date met
         messages = history.messages
         for message in messages:
             message = message.to_dict()
             message_prepared = {}
-            # Get messages until unrequired date met
-            try:
-                date_msk = message['date'].replace(tzinfo=None) + timedelta(hours=3)
-                if date_msk > date_before:
-                    message_prepared['id'] = message['id'] 
-                    message_prepared['channel_id'] = message['peer_id']['channel_id']
-                    message_prepared['channel_name'] = channel_name
-                    message_prepared['date'] = date_msk
-                    message_prepared['text'] = message['message']
-                    all_messages.append(message_prepared)
-                else:
-                    total_messages = len(all_messages)
-                    logger.info(
-                        "Number of grabbed news from channel '{}': {}". \
-                            format(channel_name, total_messages)
+            # Convert message date to timezone MSK
+            message_date_utc = message["date"].replace(tzinfo=None)
+            message_date_msk = message_date_utc + timedelta(hours=3)
+            if message_date_msk >= date_start and message_date_msk.date() < current_date:
+                message_prepared["id"] = message["id"] 
+                message_prepared["channel_id"] = message["peer_id"]["channel_id"]
+                message_prepared["channel_name"] = channel_name
+                message_prepared["channel_url"] = channel_url
+                message_prepared["date"] = message_date_msk
+                message_prepared["text"] = message["message"]
+                all_messages.append(message_prepared)
+            elif message_date_msk < date_start:
+                total_messages = len(all_messages)
+                logger.info(
+                    "Number of news grabbed from channel '{}': {}". \
+                        format(channel_name, total_messages)
+                )
+                logger.info(
+                    "Saving data from channel '{}' to database". \
+                        format(channel_name)
+                )
+                with open("../output/" + out_file_name, "w", encoding="utf-8") as out_file:
+                    # Create dataframe from news records
+                    news_df = pd.DataFrame.from_records(all_messages)
+                    # Save dataframe to MySQL table
+                    save_table_mysql(
+                        df=news_df,
+                        user=mysql_user,
+                        password=mysql_password,
+                        host=mysql_host,
+                        database=config.mysql.database,
+                        table_name=config.mysql.table_name
                     )
-                    logger.info(
-                        "Saving data from channel '{}' to database". \
-                            format(channel_name)
+                    # Save as json locally
+                    json.dump(
+                        all_messages, 
+                        out_file, 
+                        ensure_ascii=False, 
+                        cls=DateTimeEncoder, 
+                        indent=4
                     )
-                    with open('../output/' + out_file_name, 'w', encoding='utf-8') as out_file:
-                        # Create dataframe from news records
-                        news_df = pd.DataFrame.from_records(all_messages)
-                        # Save dataframe to MySQL table
-                        save_table_mysql(df=news_df, conf=database_config)
-                        # Save as json locally
-                        json.dump(all_messages, out_file, ensure_ascii=False, cls=DateTimeEncoder)
-                    return
-            # There can be a post with no text (only pictures)
-            except KeyError:
-                continue
+                break
+        return
 
 
 async def main():
     # Read given urls to channels and get messsages from them
-    with open('../input/channel_urls.txt', 'r') as url_file:
-        urls = url_file.read().strip().split('\n')
+    with open(input_path, "r") as url_file:
+        urls = url_file.read().strip().split("\n")
 
     for url in urls:
-        channel_name = url.replace('https://t.me/', '')
+        channel_name = url.replace("https://t.me/", "")
         channel = await client.get_entity(url)
         await dump_all_messages(
-            channel, 
-            channel_name=channel_name, 
-            out_file_name=channel_name + '.json', 
-            limit_msg=limit_msg
+            channel,
+            out_file_name=channel_name + ".json", 
+            limit_msg=config.grabber.limit_msg,
+            channel_name=channel_name,
+            channel_url=url
         )
 
 
-logger.info('Running channel message grabber')
-with client:
-    client.loop.run_until_complete(main())
+if __name__ == "__main__":
+    logger.info("Running channel message grabber")
+    with client:
+        client.loop.run_until_complete(main())

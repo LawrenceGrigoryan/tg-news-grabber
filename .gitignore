@@ -1,7 +1,9 @@
 .venv
+.vscode
 *.session
 *.ini
-*.yaml
+git.yaml
 *.session
 .ipynb_checkpoints
 __pycache__
+.env
