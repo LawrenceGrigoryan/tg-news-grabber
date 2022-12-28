@@ -8,3 +8,4 @@ git.yaml
 __pycache__
 .env
 logs
+mysql_console.sh
