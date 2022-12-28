@@ -6,3 +6,6 @@ git.yaml
 README.md
 __pycache__
 .env
+*.sh
+*.session
+*.log

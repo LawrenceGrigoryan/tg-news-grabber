@@ -1,3 +1,6 @@
+"""
+Telegram channel message grabber
+"""
 from datetime import datetime, timedelta
 from typing import NoReturn, Union
 import json
@@ -24,19 +27,22 @@ logs_file = constants.LOGS_FILE
 config_path = constants.CONFIG_PATH
 
 # Add logging
-logger = getLogger(__name__, file_name=logs_file)
+logger = getLogger(
+    name=__name__, 
+    file_name=logs_file,
+    format="%(asctime)s: %(levelname)s: %(name)s: %(message)s",
+    date_format="%Y-%m-%d %H:%M:%S"
+)
 
 logger.info("Reading configuration")
 config = OmegaConf.load(config_path)
 
 logger.info("Reading connection params from environment variables")
-# Telegram
-api_id = os.getenv("API_ID")
-api_hash = os.getenv("API_HASH")
-username = os.getenv("USERNAME")
-phone = os.getenv("PHONE")
-bot_token = os.getenv("BOT_TOKEN")
-# Database
+api_id = os.getenv("TG_API_ID")
+api_hash = os.getenv("TG_API_HASH")
+username = os.getenv("TG_USERNAME")
+phone = os.getenv("TG_PHONE")
+bot_token = os.getenv("TG_BOT_TOKEN")
 mysql_host = os.getenv("MYSQL_HOST")
 mysql_user = os.getenv("MYSQL_USER")
 mysql_password = os.getenv("MYSQL_PASSWORD")

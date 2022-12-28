@@ -1,1 +1,1 @@
-30 21 * * * cd /app/src && /usr/local/bin/python3 run_tg_grabber.py > /app/logs/cron_log.log 2>/app/logs/cron_err.log
+1 0 * * * cd /app/src && /usr/local/bin/python3 run_tg_grabber.py > /app/logs/cron_log.log 2>/app/logs/cron_err.log

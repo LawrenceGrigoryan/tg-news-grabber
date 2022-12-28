@@ -1,4 +1,6 @@
-"""Common utils for python scripts"""
+"""
+Common utils for python scripts
+"""
 import logging
 import sys 
 from typing import Optional
@@ -23,6 +25,7 @@ def getLogger(
     name: Optional[str] = None,
     level: int=logging.INFO,
     format: str = logging.BASIC_FORMAT,
+    date_format: str = None,
     file_name: Optional[str]=None
     ):
     """
@@ -31,15 +34,15 @@ def getLogger(
     Args:
         name (Optional[str], optional): Name of a logger. Defaults to None.
         level (int, optional): Level of logging. Defaults to logging.INFO.
-        format (str, optional): Format of logging. Defaults to logging.BASIC_FORMAT.
+        format (str, optional): Format of logging message. Defaults to logging.BASIC_FORMAT.
+        date_format (str, optional): Format for logging dates. Defaults to None.
         file_name (Optional[str], optional): File to log in. Defaults to None.
     """
     logger = logging.getLogger(name)
     logger.setLevel(level)
 
-    formatter = logging.Formatter(format)
-
     # stdout handler
+    formatter = logging.Formatter(format, date_format)
     stdout_handler = logging.StreamHandler(sys.stdout)
     stdout_handler.setFormatter(formatter)
     logger.addHandler(stdout_handler)

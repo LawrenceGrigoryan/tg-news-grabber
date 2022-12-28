@@ -1,4 +1,6 @@
-"""Connection utilities for MySQL server"""
+"""
+Connection utilities for MySQL server
+"""
 from typing import NoReturn
 import sqlalchemy
 import pandas as pd
