@@ -12,7 +12,7 @@ from dotenv import load_dotenv
 from telethon import hints
 from telethon.sync import TelegramClient
 from telethon.tl.functions.messages import GetHistoryRequest
-from mysql.connector import connect, Error
+from mysql.connector import connect
 
 from utils import getLogger
 import constants
@@ -44,11 +44,13 @@ phone = os.getenv("TG_PHONE")
 mysql_host = os.getenv("MYSQL_HOST")
 mysql_user = os.getenv("MYSQL_USER")
 mysql_password = os.getenv("MYSQL_PASSWORD")
+s3_access_key_id = os.getenv("S3_ACCESS_KEY_ID")
+s3_secret_key = os.getenv("S3_SECRET_KEY")
 database = config.mysql.database
 table = config.mysql.table
 
 logger.info("Creating a telegram client")
-client = TelegramClient(logs_path + 'tg_grabber', api_id, api_hash)
+client = TelegramClient(logs_path + "tg_grabber", api_id, api_hash)
 client.start(phone=phone)
 
 class DateTimeEncoder(json.JSONEncoder):
@@ -65,9 +67,7 @@ class DateTimeEncoder(json.JSONEncoder):
 
 async def dump_all_messages(
         channel: hints.Entity,
-        out_file_name: str,
         limit_msg: int,
-        channel_name: Union[None, str] = None,
         channel_url: Union[None, str] = None
         ) -> NoReturn:
     """
@@ -86,6 +86,9 @@ async def dump_all_messages(
     Returns:
         NoReturn
     """
+    # Get cannel name from url
+    channel_name = channel_url.replace("https://t.me/", "")
+
     # Get dates to filter out some news
     current_date = (datetime.today() + timedelta(hours=3)).date()
     date_start = current_date - timedelta(days=1)
@@ -137,28 +140,33 @@ async def dump_all_messages(
                 )
 
                 # Connect to database and save messages
-                records = [tuple(message.values()) for message in all_messages]
+                records = [tuple(message.values()) for message in all_messages \
+                           if message["text"] != "" and not pd.isna(message["text"])]
                 insert_query = \
                 f"""
                 INSERT IGNORE INTO {database}.{table}
                 (message_id, channel_id, channel_name, channel_url, date, text)
                 VALUES (%s, %s, %s, %s, %s, %s)
                 """
-                conn = connect(
-                    host=mysql_host,
-                    password=mysql_password,
-                    user=mysql_user,
-                )
-                with conn.cursor() as cursor:
-                    cursor.executemany(insert_query, records)
-                    conn.commit()
-                    cursor.close()
-                    conn.close()
+                try:
+                    conn = connect(
+                        host=mysql_host,
+                        password=mysql_password,
+                        user=mysql_user,
+                    )
+                    with conn.cursor() as cursor:
+                        cursor.executemany(insert_query, records)
+                        conn.commit()
+                        cursor.close()
+                        conn.close()
+                except Exception as exc:
+                    logger.error(exc)
 
+                # Create a unique file name
+                date_start_str = date_start.strftime("%Y%m%d")
+                out_file_name = channel_name + '_' + date_start_str + '.json'
+                # Save as temporary json locally
                 with open("../output/" + out_file_name, "w", encoding="utf-8") as out_file:
-                    # Create dataframe from news records
-
-                    # Save as json locally
                     json.dump(
                         all_messages, 
                         out_file, 
@@ -166,6 +174,10 @@ async def dump_all_messages(
                         cls=DateTimeEncoder, 
                         indent=4
                     )
+
+                # Save to S3 bucket
+                
+
                 break
         return
 
@@ -176,14 +188,11 @@ async def main():
         urls = url_file.read().strip().split("\n")
 
     for url in urls:
-        channel_name = url.replace("https://t.me/", "")
         channel = await client.get_entity(url)
         await dump_all_messages(
             channel,
-            out_file_name=channel_name + ".json", 
-            limit_msg=config.grabber.limit_msg,
-            channel_name=channel_name,
-            channel_url=url
+            channel_url=url,
+            limit_msg=config.grabber.limit_msg
         )
 
 

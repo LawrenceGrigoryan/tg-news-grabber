@@ -5,6 +5,6 @@ CREATE TABLE IF NOT EXISTS gpb_news_external.telegram_news(
         channel_name VARCHAR(100),
         channel_url VARCHAR(100),
         `date` VARCHAR(100),
-        `text` TEXT,
+        `text` TEXT NOT NULL,
         CONSTRAINT unique_message UNIQUE(message_id, channel_id)
 );
