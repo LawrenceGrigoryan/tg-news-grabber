@@ -1,6 +1,6 @@
 mysql:
   database: gpb_news_external
-  table_name: telegram_news
+  table: telegram_news
 
 grabber:
   limit_msg: 100000

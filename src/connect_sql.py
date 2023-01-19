@@ -1,12 +1,26 @@
 """
 Connection utilities for MySQL server
 """
+import os
 from typing import NoReturn
 import sqlalchemy
 import pandas as pd
+from mysql.connector import connect
 
 
-def save_table_mysql(
+def get_connection_mysql():
+    """
+    Get connection to MySQL
+    """
+    connection = connect(
+        host=os.getenv("MYSQL_HOST"),
+        user=os.getenv("MYSQL_USER"),
+        password=os.getenv("MYSQL_PASSWORD")
+    )
+    return connection
+
+
+def save_df_mysql(
         df: pd.DataFrame,
         user: str,
         password: str,

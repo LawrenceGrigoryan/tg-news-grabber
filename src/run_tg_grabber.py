@@ -12,9 +12,9 @@ from dotenv import load_dotenv
 from telethon import hints
 from telethon.sync import TelegramClient
 from telethon.tl.functions.messages import GetHistoryRequest
+from mysql.connector import connect, Error
 
 from utils import getLogger
-from connect_sql import save_table_mysql
 import constants
 
 # Load environment variables from .env
@@ -40,17 +40,16 @@ config = OmegaConf.load(config_path)
 logger.info("Reading connection params from environment variables")
 api_id = os.getenv("TG_API_ID")
 api_hash = os.getenv("TG_API_HASH")
-username = os.getenv("TG_USERNAME")
 phone = os.getenv("TG_PHONE")
-bot_token = os.getenv("TG_BOT_TOKEN")
 mysql_host = os.getenv("MYSQL_HOST")
 mysql_user = os.getenv("MYSQL_USER")
 mysql_password = os.getenv("MYSQL_PASSWORD")
+database = config.mysql.database
+table = config.mysql.table
 
 logger.info("Creating a telegram client")
-client = TelegramClient(logs_path + username, api_id, api_hash)
-client.start(bot_token=bot_token)
-
+client = TelegramClient(logs_path + 'tg_grabber', api_id, api_hash)
+client.start(phone=phone)
 
 class DateTimeEncoder(json.JSONEncoder):
     """
@@ -119,7 +118,7 @@ async def dump_all_messages(
             message_date_utc = message["date"].replace(tzinfo=None)
             message_date_msk = message_date_utc + timedelta(hours=3)
             if message_date_msk >= date_start and message_date_msk.date() < current_date:
-                message_prepared["id"] = message["id"] 
+                message_prepared["message_id"] = message["id"] 
                 message_prepared["channel_id"] = message["peer_id"]["channel_id"]
                 message_prepared["channel_name"] = channel_name
                 message_prepared["channel_url"] = channel_url
@@ -136,18 +135,29 @@ async def dump_all_messages(
                     "Saving data from channel '{}' to database". \
                         format(channel_name)
                 )
+
+                # Connect to database and save messages
+                records = [tuple(message.values()) for message in all_messages]
+                insert_query = \
+                f"""
+                INSERT IGNORE INTO {database}.{table}
+                (message_id, channel_id, channel_name, channel_url, date, text)
+                VALUES (%s, %s, %s, %s, %s, %s)
+                """
+                conn = connect(
+                    host=mysql_host,
+                    password=mysql_password,
+                    user=mysql_user,
+                )
+                with conn.cursor() as cursor:
+                    cursor.executemany(insert_query, records)
+                    conn.commit()
+                    cursor.close()
+                    conn.close()
+
                 with open("../output/" + out_file_name, "w", encoding="utf-8") as out_file:
                     # Create dataframe from news records
-                    news_df = pd.DataFrame.from_records(all_messages)
-                    # Save dataframe to MySQL table
-                    save_table_mysql(
-                        df=news_df,
-                        user=mysql_user,
-                        password=mysql_password,
-                        host=mysql_host,
-                        database=config.mysql.database,
-                        table_name=config.mysql.table_name
-                    )
+
                     # Save as json locally
                     json.dump(
                         all_messages, 

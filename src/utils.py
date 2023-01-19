@@ -7,20 +7,6 @@ from typing import Optional
 import omegaconf
 
 
-def getConfig(path: str) -> omegaconf.dictconfig.DictConfig:
-    """
-    Read yaml config
-
-    Args:
-        path (str): Path to config file
-
-    Returns:
-        omegaconf.dictconfig.DictConfig: config object
-    """
-    config = omegaconf.OmegaConf.load(path)
-    return config
-
-
 def getLogger(
     name: Optional[str] = None,
     level: int=logging.INFO,
