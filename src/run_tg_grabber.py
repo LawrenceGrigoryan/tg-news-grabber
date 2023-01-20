@@ -126,12 +126,29 @@ async def dump_all_messages(
                 message_prepared["channel_url"] = channel_url
                 message_prepared["date"] = message_date_msk
                 message_prepared["text"] = message["message"]
+                message_prepared["views"] = message["views"]
+                message_prepared["forwards"] = message["forwards"]
+                # Looking for urls in a message text
+                found_urls = []
+                try:
+                    entities = message["entities"]
+                    for entity in entities:
+                        if entity["_"] == "MessageEntityTextUrl":
+                            found_url = entity["url"]
+                            if found_url not in found_urls:
+                                found_urls.append(found_url)
+                except KeyError:
+                    pass
+                found_urls_str = ", ".join(found_urls)
+                message_prepared["found_urls"] = found_urls_str
+                report_dttm = datetime.today().strftime("%Y-%m-%d %H:%M:%S")
+                message_prepared["report_dttm"] = report_dttm
                 all_messages.append(message_prepared)
             elif message_date_msk < date_start:
                 total_messages = len(all_messages)
                 logger.info(
                     "Number of news grabbed from channel '{}': {}". \
-                        format(channel_name, total_messages)
+                        format(channel_url, total_messages)
                 )
 
                 logger.info(
@@ -144,8 +161,9 @@ async def dump_all_messages(
                 insert_query = \
                 f"""
                 INSERT IGNORE INTO {db_database}.{db_table}
-                (message_id, channel_id, channel_name, channel_url, date, text)
-                VALUES (%s, %s, %s, %s, %s, %s)
+                (message_id, channel_id, channel_name, 
+                channel_url, date, text, views, forwards, found_urls, report_dttm)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
                 """
                 try:
                     conn = connect(
@@ -176,7 +194,7 @@ async def dump_all_messages(
                         indent=4
                     )
 
-                logger.info("Uploading files to S3 bucket")
+                logger.info(f"Uploading file {out_file_name} to S3 bucket")
                 # Save to S3 bucket
                 s3_file_path = os.path.join(s3_folder, out_file_name)
                 s3_client.upload_file(

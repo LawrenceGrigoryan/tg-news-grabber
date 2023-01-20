@@ -1,1 +1,1 @@
-mysql --host=$(echo $MYSQL_HOST) --user=$(echo $MYSQL_USER) --password=$(echo $MYSQL_PASSWORD)
+mysql --host=$(echo $DB_HOST) --user=$(echo $DB_USER) --password=$(echo $DB_PASSWORD)

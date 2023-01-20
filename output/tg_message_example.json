@@ -1,0 +1,303 @@
+{
+    "_": "Message",
+    "id": 2023,
+    "peer_id": {
+        "_": "PeerChannel",
+        "channel_id": 1606432449
+    },
+    "date": "2023-01-18T19:07:40+00:00",
+    "message": "‘Tragedies are outpacing life’: In a video address at Davos, Zelensky mourns the dead and pleads for help.\n\nPresident Volodymyr Zelensky made a passionate appeal by video on Wednesday to heads of state and other decision makers gathered at the World Economic Forum in Davos, Switzerland, urging a faster pace of support for his country in the face of Russia’s invasion. Read more\n\n@nytimes",
+    "out": false,
+    "mentioned": false,
+    "media_unread": false,
+    "silent": false,
+    "post": true,
+    "from_scheduled": false,
+    "legacy": false,
+    "edit_hide": true,
+    "pinned": false,
+    "noforwards": false,
+    "from_id": null,
+    "fwd_from": null,
+    "via_bot_id": null,
+    "reply_to": null,
+    "media": {
+        "_": "MessageMediaPhoto",
+        "photo": {
+            "_": "Photo",
+            "id": 5928282473668652903,
+            "access_hash": 8715488287695003767,
+            "file_reference": [
+                2,
+                95,
+                192,
+                54,
+                193,
+                0,
+                0,
+                7,
+                231,
+                99,
+                202,
+                164,
+                155,
+                92,
+                117,
+                65,
+                68,
+                52,
+                137,
+                212,
+                172,
+                105,
+                136,
+                36,
+                91,
+                157,
+                192,
+                40,
+                197
+            ],
+            "date": "2023-01-18T18:35:33+00:00",
+            "sizes": [
+                {
+                    "_": "PhotoStrippedSize",
+                    "type": "i",
+                    "bytes": [
+                        1,
+                        21,
+                        40,
+                        202,
+                        64,
+                        204,
+                        192,
+                        47,
+                        90,
+                        180,
+                        171,
+                        113,
+                        223,
+                        25,
+                        250,
+                        138,
+                        169,
+                        28,
+                        134,
+                        55,
+                        220,
+                        6,
+                        78,
+                        42,
+                        113,
+                        122,
+                        248,
+                        232,
+                        51,
+                        235,
+                        91,
+                        70,
+                        74,
+                        219,
+                        137,
+                        147,
+                        121,
+                        115,
+                        250,
+                        47,
+                        230,
+                        41,
+                        174,
+                        179,
+                        227,
+                        162,
+                        231,
+                        234,
+                        41,
+                        233,
+                        118,
+                        158,
+                        86,
+                        90,
+                        71,
+                        221,
+                        221,
+                        113,
+                        212,
+                        212,
+                        6,
+                        241,
+                        201,
+                        232,
+                        49,
+                        233,
+                        79,
+                        153,
+                        117,
+                        98,
+                        212,
+                        132,
+                        163,
+                        249,
+                        190,
+                        89,
+                        31,
+                        49,
+                        61,
+                        40,
+                        161,
+                        229,
+                        103,
+                        155,
+                        204,
+                        192,
+                        7,
+                        138,
+                        43,
+                        38,
+                        245,
+                        25,
+                        21,
+                        45,
+                        20,
+                        84,
+                        140,
+                        94,
+                        212,
+                        148,
+                        81,
+                        84,
+                        250,
+                        0,
+                        148,
+                        81,
+                        69,
+                        72,
+                        31
+                    ]
+                },
+                {
+                    "_": "PhotoSize",
+                    "type": "m",
+                    "w": 320,
+                    "h": 167,
+                    "size": 10762
+                },
+                {
+                    "_": "PhotoSize",
+                    "type": "x",
+                    "w": 800,
+                    "h": 418,
+                    "size": 48370
+                },
+                {
+                    "_": "PhotoSizeProgressive",
+                    "type": "y",
+                    "w": 1050,
+                    "h": 549,
+                    "sizes": [
+                        10548,
+                        18900,
+                        30312,
+                        39746,
+                        68485
+                    ]
+                }
+            ],
+            "dc_id": 4,
+            "has_stickers": false,
+            "video_sizes": []
+        },
+        "ttl_seconds": null
+    },
+    "reply_markup": null,
+    "entities": [
+        {
+            "_": "MessageEntityTextUrl",
+            "offset": 0,
+            "length": 106,
+            "url": "https://nyti.ms/3XCe97M"
+        },
+        {
+            "_": "MessageEntityBold",
+            "offset": 0,
+            "length": 106
+        },
+        {
+            "_": "MessageEntityTextUrl",
+            "offset": 370,
+            "length": 9,
+            "url": "https://nyti.ms/3XCe97M"
+        },
+        {
+            "_": "MessageEntityBold",
+            "offset": 370,
+            "length": 9
+        },
+        {
+            "_": "MessageEntityMention",
+            "offset": 381,
+            "length": 8
+        }
+    ],
+    "views": 15834,
+    "forwards": 12,
+    "replies": null,
+    "edit_date": "2023-01-18T19:07:53+00:00",
+    "post_author": null,
+    "grouped_id": null,
+    "reactions": {
+        "_": "MessageReactions",
+        "results": [
+            {
+                "_": "ReactionCount",
+                "reaction": {
+                    "_": "ReactionEmoji",
+                    "emoticon": "👍"
+                },
+                "count": 128,
+                "chosen_order": null
+            },
+            {
+                "_": "ReactionCount",
+                "reaction": {
+                    "_": "ReactionEmoji",
+                    "emoticon": "❤"
+                },
+                "count": 51,
+                "chosen_order": null
+            },
+            {
+                "_": "ReactionCount",
+                "reaction": {
+                    "_": "ReactionEmoji",
+                    "emoticon": "👎"
+                },
+                "count": 43,
+                "chosen_order": null
+            },
+            {
+                "_": "ReactionCount",
+                "reaction": {
+                    "_": "ReactionEmoji",
+                    "emoticon": "😢"
+                },
+                "count": 20,
+                "chosen_order": null
+            },
+            {
+                "_": "ReactionCount",
+                "reaction": {
+                    "_": "ReactionEmoji",
+                    "emoticon": "🤔"
+                },
+                "count": 9,
+                "chosen_order": null
+            }
+        ],
+        "min": false,
+        "can_see_list": false,
+        "recent_reactions": []
+    },
+    "restriction_reason": [],
+    "ttl_period": null
+}
