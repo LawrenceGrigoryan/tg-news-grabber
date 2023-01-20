@@ -1,12 +1,13 @@
 """
 Telegram channel message grabber
 """
-from datetime import datetime, timedelta
-from typing import NoReturn, Union
 import json
 import os
+from datetime import datetime, timedelta
+from typing import NoReturn, Union
 
 import pandas as pd
+import boto3
 from omegaconf import OmegaConf
 from dotenv import load_dotenv
 from telethon import hints
@@ -14,55 +15,55 @@ from telethon.sync import TelegramClient
 from telethon.tl.functions.messages import GetHistoryRequest
 from mysql.connector import connect
 
-from utils import getLogger
 import constants
+from utils import getLogger, DateTimeEncoder
 
 # Load environment variables from .env
 load_dotenv()
 
 # Reading constants
 input_path = constants.INPUT_PATH
+output_path = constants.OUTPUT_PATH
 logs_path = constants.LOGS_PATH
-logs_file = constants.LOGS_FILE
 config_path = constants.CONFIG_PATH
 
 # Add logging
 logger = getLogger(
     name=__name__, 
-    file_name=logs_file,
+    file_name=logs_path + "tg_grabber.log",
     format="%(asctime)s: %(levelname)s: %(name)s: %(message)s",
     date_format="%Y-%m-%d %H:%M:%S"
 )
 
 logger.info("Reading configuration")
 config = OmegaConf.load(config_path)
+db_database = config.db.database
+db_table = config.db.table
+s3_bucket = config.s3.bucket
+s3_folder = config.s3.folder
 
 logger.info("Reading connection params from environment variables")
-api_id = os.getenv("TG_API_ID")
-api_hash = os.getenv("TG_API_HASH")
-phone = os.getenv("TG_PHONE")
-mysql_host = os.getenv("MYSQL_HOST")
-mysql_user = os.getenv("MYSQL_USER")
-mysql_password = os.getenv("MYSQL_PASSWORD")
+tg_api_id = os.getenv("TG_API_ID")
+tg_api_hash = os.getenv("TG_API_HASH")
+tg_phone = os.getenv("TG_PHONE")
+db_host = os.getenv("DB_HOST")
+db_user = os.getenv("DB_USER")
+db_password = os.getenv("DB_PASSWORD")
 s3_access_key_id = os.getenv("S3_ACCESS_KEY_ID")
 s3_secret_key = os.getenv("S3_SECRET_KEY")
-database = config.mysql.database
-table = config.mysql.table
 
-logger.info("Creating a telegram client")
-client = TelegramClient(logs_path + "tg_grabber", api_id, api_hash)
-client.start(phone=phone)
+logger.info("Creating a telegram client session")
+client = TelegramClient(logs_path + "tg_grabber", tg_api_id, tg_api_hash)
+client.start(phone=tg_phone)
 
-class DateTimeEncoder(json.JSONEncoder):
-    """
-    Class serialize dates to JSON
-    """
-    def default(self, o) -> json.JSONEncoder.default:
-        if isinstance(o, datetime):
-            return o.isoformat()
-        if isinstance(o, bytes):
-            return list(o)
-        return json.JSONEncoder.default(self, o)
+logger.info("Creating an S3 session")
+session = boto3.session.Session()
+s3_client = session.client(
+    service_name="s3",
+    endpoint_url="https://ib.bizmrg.com",
+    aws_access_key_id=s3_access_key_id,
+    aws_secret_access_key=s3_secret_key
+)
 
 
 async def dump_all_messages(
@@ -77,11 +78,9 @@ async def dump_all_messages(
     using crontab.
 
     Args:
-        channel (hints.Entity): Telethon channel object.
-        out_file_name (str): File to save grabbed news.
-        limit_msg (int): Maximum number of messages to receive.
-        channel_name (Union[None, str], optional): Channel name. Defaults to None.
-        channel_url (Union[None, str], optional): Channel url. Defaults to None.
+        channel (hints.Entity): Telethon channel object
+        limit_msg (int): Maximum number of messages to receive
+        channel_url (Union[None, str], optional): Channel url. Defaults to None
 
     Returns:
         NoReturn
@@ -134,25 +133,25 @@ async def dump_all_messages(
                     "Number of news grabbed from channel '{}': {}". \
                         format(channel_name, total_messages)
                 )
+
                 logger.info(
                     "Saving data from channel '{}' to database". \
                         format(channel_name)
                 )
-
                 # Connect to database and save messages
                 records = [tuple(message.values()) for message in all_messages \
                            if message["text"] != "" and not pd.isna(message["text"])]
                 insert_query = \
                 f"""
-                INSERT IGNORE INTO {database}.{table}
+                INSERT IGNORE INTO {db_database}.{db_table}
                 (message_id, channel_id, channel_name, channel_url, date, text)
                 VALUES (%s, %s, %s, %s, %s, %s)
                 """
                 try:
                     conn = connect(
-                        host=mysql_host,
-                        password=mysql_password,
-                        user=mysql_user,
+                        host=db_host,
+                        password=db_password,
+                        user=db_user,
                     )
                     with conn.cursor() as cursor:
                         cursor.executemany(insert_query, records)
@@ -162,11 +161,13 @@ async def dump_all_messages(
                 except Exception as exc:
                     logger.error(exc)
 
+                logger.info("Saving tmp files locally")
                 # Create a unique file name
                 date_start_str = date_start.strftime("%Y%m%d")
-                out_file_name = channel_name + '_' + date_start_str + '.json'
+                out_file_name = channel_name + "_" + date_start_str + ".json"
+                out_file_path = os.path.join(output_path, out_file_name)
                 # Save as temporary json locally
-                with open("../output/" + out_file_name, "w", encoding="utf-8") as out_file:
+                with open(out_file_path, "w", encoding="utf-8") as out_file:
                     json.dump(
                         all_messages, 
                         out_file, 
@@ -175,8 +176,14 @@ async def dump_all_messages(
                         indent=4
                     )
 
+                logger.info("Uploading files to S3 bucket")
                 # Save to S3 bucket
-                
+                s3_file_path = os.path.join(s3_folder, out_file_name)
+                s3_client.upload_file(
+                    out_file_path,
+                    s3_bucket,
+                    s3_file_path
+                )
 
                 break
         return

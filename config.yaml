@@ -1,6 +1,9 @@
-mysql:
+db:
   database: gpb_news_external
   table: telegram_news
+s3:
+  bucket: gpb_news_external
+  folder: telegram_news
 
 grabber:
   limit_msg: 100000

@@ -1,0 +1,362 @@
+2023-01-17 10:13:10: INFO: __main__: Reading configuration
+2023-01-17 10:13:10: INFO: __main__: Reading connection params from environment variables
+2023-01-17 10:13:10: INFO: __main__: Creating a telegram client
+2023-01-17 10:13:12: INFO: __main__: Running channel message grabber
+2023-01-17 10:13:28: INFO: __main__: Reading configuration
+2023-01-17 10:13:28: INFO: __main__: Reading connection params from environment variables
+2023-01-17 10:13:28: INFO: __main__: Creating a telegram client
+2023-01-17 10:13:28: INFO: __main__: Running channel message grabber
+2023-01-17 10:14:18: INFO: __main__: Reading configuration
+2023-01-17 10:14:18: INFO: __main__: Reading connection params from environment variables
+2023-01-17 10:14:18: INFO: __main__: Creating a telegram client
+2023-01-17 10:14:19: INFO: __main__: Running channel message grabber
+2023-01-17 10:15:21: INFO: __main__: Reading configuration
+2023-01-17 10:15:21: INFO: __main__: Reading connection params from environment variables
+2023-01-17 10:15:21: INFO: __main__: Creating a telegram client
+2023-01-17 10:15:38: INFO: __main__: Reading configuration
+2023-01-17 10:15:38: INFO: __main__: Reading connection params from environment variables
+2023-01-17 10:15:38: INFO: __main__: Creating a telegram client
+2023-01-17 10:15:45: INFO: __main__: Reading configuration
+2023-01-17 10:15:45: INFO: __main__: Reading connection params from environment variables
+2023-01-17 10:15:45: INFO: __main__: Creating a telegram client
+2023-01-17 10:16:09: INFO: __main__: Reading configuration
+2023-01-17 10:16:09: INFO: __main__: Reading connection params from environment variables
+2023-01-17 10:16:09: INFO: __main__: Creating a telegram client
+2023-01-17 10:16:09: INFO: __main__: Running channel message grabber
+2023-01-17 10:16:37: INFO: __main__: Reading configuration
+2023-01-17 10:16:37: INFO: __main__: Reading connection params from environment variables
+2023-01-17 10:16:37: INFO: __main__: Creating a telegram client
+2023-01-17 10:16:37: INFO: __main__: Running channel message grabber
+2023-01-17 10:21:31: INFO: __main__: Reading configuration
+2023-01-17 10:21:31: INFO: __main__: Reading connection params from environment variables
+2023-01-17 10:21:31: INFO: __main__: Creating a telegram client
+2023-01-17 10:21:32: INFO: __main__: Running channel message grabber
+2023-01-17 10:26:01: INFO: __main__: Reading configuration
+2023-01-17 10:26:01: INFO: __main__: Reading connection params from environment variables
+2023-01-17 10:26:01: INFO: __main__: Creating a telegram client
+2023-01-17 10:26:31: INFO: __main__: Reading configuration
+2023-01-17 10:26:31: INFO: __main__: Reading connection params from environment variables
+2023-01-17 10:26:31: INFO: __main__: Creating a telegram client
+2023-01-17 10:26:32: INFO: __main__: Running channel message grabber
+2023-01-19 11:24:09: INFO: __main__: Reading configuration
+2023-01-19 11:24:09: INFO: __main__: Reading connection params from environment variables
+2023-01-19 11:24:09: INFO: __main__: Creating a telegram client
+2023-01-19 11:24:50: INFO: __main__: Running channel message grabber
+2023-01-19 11:24:50: INFO: __main__: Number of news grabbed from channel 'bbcrussian': 52
+2023-01-19 11:24:50: INFO: __main__: Saving data from channel 'bbcrussian' to database
+2023-01-19 11:25:00: INFO: __main__: Reading configuration
+2023-01-19 11:25:00: INFO: __main__: Reading connection params from environment variables
+2023-01-19 11:25:00: INFO: __main__: Creating a telegram client
+2023-01-19 11:25:01: INFO: __main__: Running channel message grabber
+2023-01-19 11:25:01: INFO: __main__: Number of news grabbed from channel 'bbcrussian': 52
+2023-01-19 11:25:01: INFO: __main__: Saving data from channel 'bbcrussian' to database
+2023-01-19 11:25:02: INFO: __main__: Number of news grabbed from channel 'meduzalive': 58
+2023-01-19 11:25:02: INFO: __main__: Saving data from channel 'meduzalive' to database
+2023-01-19 11:25:02: INFO: __main__: Number of news grabbed from channel 'nytimes': 6
+2023-01-19 11:25:02: INFO: __main__: Saving data from channel 'nytimes' to database
+2023-01-19 11:25:03: INFO: __main__: Number of news grabbed from channel 'varlamov_news': 30
+2023-01-19 11:25:03: INFO: __main__: Saving data from channel 'varlamov_news' to database
+2023-01-19 11:25:03: INFO: __main__: Number of news grabbed from channel 'currenttime': 36
+2023-01-19 11:25:03: INFO: __main__: Saving data from channel 'currenttime' to database
+2023-01-19 11:25:04: INFO: __main__: Number of news grabbed from channel 'novaya_pishet': 7
+2023-01-19 11:25:04: INFO: __main__: Saving data from channel 'novaya_pishet' to database
+2023-01-19 11:25:05: INFO: __main__: Number of news grabbed from channel 'bazabazon': 20
+2023-01-19 11:25:05: INFO: __main__: Saving data from channel 'bazabazon' to database
+2023-01-19 12:11:27: INFO: __main__: Reading configuration
+2023-01-19 12:11:27: INFO: __main__: Reading connection params from environment variables
+2023-01-19 12:11:27: INFO: __main__: Creating a telegram client
+2023-01-19 12:11:28: INFO: __main__: Running channel message grabber
+2023-01-19 12:11:28: INFO: __main__: Number of news grabbed from channel 'bbcrussian': 52
+2023-01-19 12:11:28: INFO: __main__: Saving data from channel 'bbcrussian' to database
+2023-01-19 12:17:30: INFO: __main__: Reading configuration
+2023-01-19 12:17:30: INFO: __main__: Reading connection params from environment variables
+2023-01-19 12:17:30: INFO: __main__: Creating a telegram client
+2023-01-19 12:17:31: INFO: __main__: Running channel message grabber
+2023-01-19 12:17:31: INFO: __main__: Number of news grabbed from channel 'bbcrussian': 52
+2023-01-19 12:17:31: INFO: __main__: Saving data from channel 'bbcrussian' to database
+2023-01-19 12:18:52: INFO: __main__: Reading configuration
+2023-01-19 12:18:52: INFO: __main__: Reading connection params from environment variables
+2023-01-19 12:18:52: INFO: __main__: Creating a telegram client
+2023-01-19 12:18:53: INFO: __main__: Running channel message grabber
+2023-01-19 12:18:53: INFO: __main__: Number of news grabbed from channel 'bbcrussian': 52
+2023-01-19 12:18:53: INFO: __main__: Saving data from channel 'bbcrussian' to database
+2023-01-19 12:18:54: INFO: __main__: Number of news grabbed from channel 'meduzalive': 58
+2023-01-19 12:18:54: INFO: __main__: Saving data from channel 'meduzalive' to database
+2023-01-19 12:18:54: INFO: __main__: Number of news grabbed from channel 'nytimes': 6
+2023-01-19 12:18:54: INFO: __main__: Saving data from channel 'nytimes' to database
+2023-01-19 12:18:55: INFO: __main__: Number of news grabbed from channel 'varlamov_news': 30
+2023-01-19 12:18:55: INFO: __main__: Saving data from channel 'varlamov_news' to database
+2023-01-19 12:18:55: INFO: __main__: Number of news grabbed from channel 'currenttime': 36
+2023-01-19 12:18:55: INFO: __main__: Saving data from channel 'currenttime' to database
+2023-01-19 12:18:56: INFO: __main__: Number of news grabbed from channel 'novaya_pishet': 7
+2023-01-19 12:18:56: INFO: __main__: Saving data from channel 'novaya_pishet' to database
+2023-01-19 12:18:56: INFO: __main__: Number of news grabbed from channel 'bazabazon': 20
+2023-01-19 12:18:56: INFO: __main__: Saving data from channel 'bazabazon' to database
+2023-01-19 12:19:41: INFO: __main__: Reading configuration
+2023-01-19 12:19:41: INFO: __main__: Reading connection params from environment variables
+2023-01-19 12:19:41: INFO: __main__: Creating a telegram client
+2023-01-19 12:19:41: INFO: __main__: Running channel message grabber
+2023-01-19 12:19:42: INFO: __main__: Number of news grabbed from channel 'bbcrussian': 52
+2023-01-19 12:19:42: INFO: __main__: Saving data from channel 'bbcrussian' to database
+2023-01-19 12:19:42: INFO: __main__: Number of news grabbed from channel 'meduzalive': 58
+2023-01-19 12:19:42: INFO: __main__: Saving data from channel 'meduzalive' to database
+2023-01-19 12:19:43: INFO: __main__: Number of news grabbed from channel 'nytimes': 6
+2023-01-19 12:19:43: INFO: __main__: Saving data from channel 'nytimes' to database
+2023-01-19 12:19:43: INFO: __main__: Number of news grabbed from channel 'varlamov_news': 30
+2023-01-19 12:19:43: INFO: __main__: Saving data from channel 'varlamov_news' to database
+2023-01-19 12:19:44: INFO: __main__: Number of news grabbed from channel 'currenttime': 36
+2023-01-19 12:19:44: INFO: __main__: Saving data from channel 'currenttime' to database
+2023-01-19 12:19:44: INFO: __main__: Number of news grabbed from channel 'novaya_pishet': 7
+2023-01-19 12:19:44: INFO: __main__: Saving data from channel 'novaya_pishet' to database
+2023-01-19 12:19:44: INFO: __main__: Number of news grabbed from channel 'bazabazon': 20
+2023-01-19 12:19:44: INFO: __main__: Saving data from channel 'bazabazon' to database
+2023-01-19 12:40:11: INFO: __main__: Reading configuration
+2023-01-19 12:40:11: INFO: __main__: Reading connection params from environment variables
+2023-01-19 12:40:11: INFO: __main__: Creating a telegram client
+2023-01-19 12:40:12: INFO: __main__: Running channel message grabber
+2023-01-19 12:40:13: INFO: __main__: Number of news grabbed from channel 'bbcrussian': 52
+2023-01-19 12:40:13: INFO: __main__: Saving data from channel 'bbcrussian' to database
+2023-01-19 12:40:13: INFO: __main__: Number of news grabbed from channel 'meduzalive': 58
+2023-01-19 12:40:13: INFO: __main__: Saving data from channel 'meduzalive' to database
+2023-01-19 12:40:14: INFO: __main__: Number of news grabbed from channel 'nytimes': 6
+2023-01-19 12:40:14: INFO: __main__: Saving data from channel 'nytimes' to database
+2023-01-19 12:40:14: INFO: __main__: Number of news grabbed from channel 'varlamov_news': 30
+2023-01-19 12:40:14: INFO: __main__: Saving data from channel 'varlamov_news' to database
+2023-01-19 12:40:15: INFO: __main__: Number of news grabbed from channel 'currenttime': 36
+2023-01-19 12:40:15: INFO: __main__: Saving data from channel 'currenttime' to database
+2023-01-19 12:40:15: INFO: __main__: Number of news grabbed from channel 'novaya_pishet': 7
+2023-01-19 12:40:15: INFO: __main__: Saving data from channel 'novaya_pishet' to database
+2023-01-19 12:40:16: INFO: __main__: Number of news grabbed from channel 'bazabazon': 20
+2023-01-19 12:40:16: INFO: __main__: Saving data from channel 'bazabazon' to database
+2023-01-19 12:43:42: INFO: __main__: Reading configuration
+2023-01-19 12:43:42: INFO: __main__: Reading connection params from environment variables
+2023-01-19 12:43:42: INFO: __main__: Creating a telegram client
+2023-01-19 12:43:42: INFO: __main__: Running channel message grabber
+2023-01-19 12:43:43: INFO: __main__: Number of news grabbed from channel 'bbcrussian': 52
+2023-01-19 12:43:43: INFO: __main__: Saving data from channel 'bbcrussian' to database
+2023-01-19 12:43:43: INFO: __main__: Number of news grabbed from channel 'meduzalive': 58
+2023-01-19 12:43:43: INFO: __main__: Saving data from channel 'meduzalive' to database
+2023-01-19 12:43:44: INFO: __main__: Number of news grabbed from channel 'nytimes': 6
+2023-01-19 12:43:44: INFO: __main__: Saving data from channel 'nytimes' to database
+2023-01-19 12:43:44: INFO: __main__: Number of news grabbed from channel 'varlamov_news': 30
+2023-01-19 12:43:44: INFO: __main__: Saving data from channel 'varlamov_news' to database
+2023-01-19 12:43:45: INFO: __main__: Number of news grabbed from channel 'currenttime': 36
+2023-01-19 12:43:45: INFO: __main__: Saving data from channel 'currenttime' to database
+2023-01-19 12:43:45: INFO: __main__: Number of news grabbed from channel 'novaya_pishet': 7
+2023-01-19 12:43:45: INFO: __main__: Saving data from channel 'novaya_pishet' to database
+2023-01-19 12:43:45: INFO: __main__: Number of news grabbed from channel 'bazabazon': 20
+2023-01-19 12:43:45: INFO: __main__: Saving data from channel 'bazabazon' to database
+2023-01-19 13:11:24: INFO: __main__: Reading configuration
+2023-01-19 13:11:24: INFO: __main__: Reading connection params from environment variables
+2023-01-19 13:11:24: INFO: __main__: Creating a telegram client
+2023-01-19 13:11:25: INFO: __main__: Running channel message grabber
+2023-01-19 13:11:25: INFO: __main__: Number of news grabbed from channel 'bbcrussian': 52
+2023-01-19 13:11:25: INFO: __main__: Saving data from channel 'bbcrussian' to database
+2023-01-19 13:11:26: INFO: __main__: Number of news grabbed from channel 'meduzalive': 58
+2023-01-19 13:11:26: INFO: __main__: Saving data from channel 'meduzalive' to database
+2023-01-19 13:11:27: INFO: __main__: Number of news grabbed from channel 'nytimes': 6
+2023-01-19 13:11:27: INFO: __main__: Saving data from channel 'nytimes' to database
+2023-01-19 13:11:27: INFO: __main__: Number of news grabbed from channel 'varlamov_news': 30
+2023-01-19 13:11:27: INFO: __main__: Saving data from channel 'varlamov_news' to database
+2023-01-19 13:11:28: INFO: __main__: Number of news grabbed from channel 'currenttime': 36
+2023-01-19 13:11:28: INFO: __main__: Saving data from channel 'currenttime' to database
+2023-01-19 13:11:28: INFO: __main__: Number of news grabbed from channel 'novaya_pishet': 7
+2023-01-19 13:11:28: INFO: __main__: Saving data from channel 'novaya_pishet' to database
+2023-01-19 13:11:28: INFO: __main__: Number of news grabbed from channel 'bazabazon': 20
+2023-01-19 13:11:28: INFO: __main__: Saving data from channel 'bazabazon' to database
+2023-01-19 13:22:45: INFO: __main__: Reading configuration
+2023-01-19 13:22:45: INFO: __main__: Reading connection params from environment variables
+2023-01-19 13:22:45: INFO: __main__: Creating a telegram client
+2023-01-19 13:22:45: INFO: __main__: Running channel message grabber
+2023-01-19 13:22:46: INFO: __main__: Number of news grabbed from channel 'bbcrussian': 52
+2023-01-19 13:22:46: INFO: __main__: Saving data from channel 'bbcrussian' to database
+2023-01-19 13:22:46: INFO: __main__: Number of news grabbed from channel 'meduzalive': 58
+2023-01-19 13:22:46: INFO: __main__: Saving data from channel 'meduzalive' to database
+2023-01-19 13:22:47: INFO: __main__: Number of news grabbed from channel 'nytimes': 6
+2023-01-19 13:22:47: INFO: __main__: Saving data from channel 'nytimes' to database
+2023-01-19 13:22:48: INFO: __main__: Number of news grabbed from channel 'varlamov_news': 30
+2023-01-19 13:22:48: INFO: __main__: Saving data from channel 'varlamov_news' to database
+2023-01-19 13:22:48: INFO: __main__: Number of news grabbed from channel 'currenttime': 36
+2023-01-19 13:22:48: INFO: __main__: Saving data from channel 'currenttime' to database
+2023-01-19 13:22:49: INFO: __main__: Number of news grabbed from channel 'novaya_pishet': 7
+2023-01-19 13:22:49: INFO: __main__: Saving data from channel 'novaya_pishet' to database
+2023-01-19 13:22:49: INFO: __main__: Number of news grabbed from channel 'bazabazon': 20
+2023-01-19 13:22:49: INFO: __main__: Saving data from channel 'bazabazon' to database
+2023-01-20 13:34:30: INFO: __main__: Reading configuration
+2023-01-20 13:34:54: INFO: __main__: Reading configuration
+2023-01-20 13:34:54: INFO: __main__: Reading connection params from environment variables
+2023-01-20 13:34:54: INFO: __main__: Creating a telegram client
+2023-01-20 13:34:54: INFO: __main__: 
+2023-01-20 13:34:54: INFO: __main__: Running channel message grabber
+2023-01-20 13:34:55: INFO: __main__: Number of news grabbed from channel 'bbcrussian': 45
+2023-01-20 13:34:55: INFO: __main__: Saving data from channel 'bbcrussian' to database
+2023-01-20 13:37:15: INFO: __main__: Reading configuration
+2023-01-20 13:37:15: INFO: __main__: Reading connection params from environment variables
+2023-01-20 13:37:15: INFO: __main__: Creating a telegram client
+2023-01-20 13:37:15: INFO: __main__: Running channel message grabber
+2023-01-20 13:37:16: INFO: __main__: Number of news grabbed from channel 'bbcrussian': 45
+2023-01-20 13:37:16: INFO: __main__: Saving data from channel 'bbcrussian' to database
+2023-01-20 13:37:16: INFO: __main__: Saving tmp files locally
+2023-01-20 13:37:16: INFO: __main__: Saving files to S3 bucket
+2023-01-20 13:37:17: INFO: __main__: Number of news grabbed from channel 'meduzalive': 64
+2023-01-20 13:37:17: INFO: __main__: Saving data from channel 'meduzalive' to database
+2023-01-20 13:37:17: INFO: __main__: Saving tmp files locally
+2023-01-20 13:37:17: INFO: __main__: Saving files to S3 bucket
+2023-01-20 13:37:18: INFO: __main__: Number of news grabbed from channel 'rian_ru': 88
+2023-01-20 13:37:18: INFO: __main__: Saving data from channel 'rian_ru' to database
+2023-01-20 13:37:18: INFO: __main__: Saving tmp files locally
+2023-01-20 13:37:18: INFO: __main__: Saving files to S3 bucket
+2023-01-20 13:37:19: INFO: __main__: Number of news grabbed from channel 'nytimes': 2
+2023-01-20 13:37:19: INFO: __main__: Saving data from channel 'nytimes' to database
+2023-01-20 13:37:19: INFO: __main__: Saving tmp files locally
+2023-01-20 13:37:19: INFO: __main__: Saving files to S3 bucket
+2023-01-20 13:37:20: INFO: __main__: Number of news grabbed from channel 'varlamov_news': 13
+2023-01-20 13:37:20: INFO: __main__: Saving data from channel 'varlamov_news' to database
+2023-01-20 13:37:20: INFO: __main__: Saving tmp files locally
+2023-01-20 13:37:20: INFO: __main__: Saving files to S3 bucket
+2023-01-20 13:37:20: INFO: __main__: Number of news grabbed from channel 'currenttime': 26
+2023-01-20 13:37:20: INFO: __main__: Saving data from channel 'currenttime' to database
+2023-01-20 13:37:20: INFO: __main__: Saving tmp files locally
+2023-01-20 13:37:20: INFO: __main__: Saving files to S3 bucket
+2023-01-20 13:37:21: INFO: __main__: Number of news grabbed from channel 'novaya_pishet': 8
+2023-01-20 13:37:21: INFO: __main__: Saving data from channel 'novaya_pishet' to database
+2023-01-20 13:37:21: INFO: __main__: Saving tmp files locally
+2023-01-20 13:37:21: INFO: __main__: Saving files to S3 bucket
+2023-01-20 13:37:22: INFO: __main__: Number of news grabbed from channel 'bazabazon': 17
+2023-01-20 13:37:22: INFO: __main__: Saving data from channel 'bazabazon' to database
+2023-01-20 13:37:22: INFO: __main__: Saving tmp files locally
+2023-01-20 13:37:22: INFO: __main__: Saving files to S3 bucket
+2023-01-20 13:37:22: INFO: __main__: Number of news grabbed from channel 'sharemed': 9
+2023-01-20 13:37:22: INFO: __main__: Saving data from channel 'sharemed' to database
+2023-01-20 13:37:22: INFO: __main__: Saving tmp files locally
+2023-01-20 13:37:22: INFO: __main__: Saving files to S3 bucket
+2023-01-20 13:37:23: INFO: __main__: Number of news grabbed from channel 'oldlentach': 21
+2023-01-20 13:37:23: INFO: __main__: Saving data from channel 'oldlentach' to database
+2023-01-20 13:37:23: INFO: __main__: Saving tmp files locally
+2023-01-20 13:37:23: INFO: __main__: Saving files to S3 bucket
+2023-01-20 13:37:24: INFO: __main__: Number of news grabbed from channel 'theinsider': 21
+2023-01-20 13:37:24: INFO: __main__: Saving data from channel 'theinsider' to database
+2023-01-20 13:37:24: INFO: __main__: Saving tmp files locally
+2023-01-20 13:37:24: INFO: __main__: Saving files to S3 bucket
+2023-01-20 13:37:25: INFO: __main__: Number of news grabbed from channel 'radiosvoboda': 50
+2023-01-20 13:37:25: INFO: __main__: Saving data from channel 'radiosvoboda' to database
+2023-01-20 13:37:25: INFO: __main__: Saving tmp files locally
+2023-01-20 13:37:25: INFO: __main__: Saving files to S3 bucket
+2023-01-20 13:37:26: INFO: __main__: Number of news grabbed from channel 'washingtonpost': 5
+2023-01-20 13:37:26: INFO: __main__: Saving data from channel 'washingtonpost' to database
+2023-01-20 13:37:26: INFO: __main__: Saving tmp files locally
+2023-01-20 13:37:26: INFO: __main__: Saving files to S3 bucket
+2023-01-20 13:38:58: INFO: __main__: Reading configuration
+2023-01-20 13:38:58: INFO: __main__: Reading connection params from environment variables
+2023-01-20 13:38:58: INFO: __main__: Creating a telegram client
+2023-01-20 13:38:58: INFO: __main__: Creating an S3 session
+2023-01-20 13:38:58: INFO: __main__: Running channel message grabber
+2023-01-20 13:38:59: INFO: __main__: Number of news grabbed from channel 'bbcrussian': 45
+2023-01-20 13:38:59: INFO: __main__: Saving data from channel 'bbcrussian' to database
+2023-01-20 13:38:59: INFO: __main__: Saving tmp files locally
+2023-01-20 13:38:59: INFO: __main__: Uploading files to S3 bucket
+2023-01-20 13:38:59: INFO: __main__: Number of news grabbed from channel 'meduzalive': 64
+2023-01-20 13:38:59: INFO: __main__: Saving data from channel 'meduzalive' to database
+2023-01-20 13:38:59: INFO: __main__: Saving tmp files locally
+2023-01-20 13:38:59: INFO: __main__: Uploading files to S3 bucket
+2023-01-20 13:38:59: INFO: __main__: Number of news grabbed from channel 'rian_ru': 88
+2023-01-20 13:38:59: INFO: __main__: Saving data from channel 'rian_ru' to database
+2023-01-20 13:38:59: INFO: __main__: Saving tmp files locally
+2023-01-20 13:38:59: INFO: __main__: Uploading files to S3 bucket
+2023-01-20 13:39:00: INFO: __main__: Number of news grabbed from channel 'nytimes': 2
+2023-01-20 13:39:00: INFO: __main__: Saving data from channel 'nytimes' to database
+2023-01-20 13:39:00: INFO: __main__: Saving tmp files locally
+2023-01-20 13:39:00: INFO: __main__: Uploading files to S3 bucket
+2023-01-20 13:39:00: INFO: __main__: Number of news grabbed from channel 'varlamov_news': 13
+2023-01-20 13:39:00: INFO: __main__: Saving data from channel 'varlamov_news' to database
+2023-01-20 13:39:00: INFO: __main__: Saving tmp files locally
+2023-01-20 13:39:00: INFO: __main__: Uploading files to S3 bucket
+2023-01-20 13:39:01: INFO: __main__: Number of news grabbed from channel 'currenttime': 26
+2023-01-20 13:39:01: INFO: __main__: Saving data from channel 'currenttime' to database
+2023-01-20 13:39:01: INFO: __main__: Saving tmp files locally
+2023-01-20 13:39:01: INFO: __main__: Uploading files to S3 bucket
+2023-01-20 13:39:01: INFO: __main__: Number of news grabbed from channel 'novaya_pishet': 8
+2023-01-20 13:39:01: INFO: __main__: Saving data from channel 'novaya_pishet' to database
+2023-01-20 13:39:01: INFO: __main__: Saving tmp files locally
+2023-01-20 13:39:01: INFO: __main__: Uploading files to S3 bucket
+2023-01-20 13:39:01: INFO: __main__: Number of news grabbed from channel 'bazabazon': 17
+2023-01-20 13:39:01: INFO: __main__: Saving data from channel 'bazabazon' to database
+2023-01-20 13:39:01: INFO: __main__: Saving tmp files locally
+2023-01-20 13:39:01: INFO: __main__: Uploading files to S3 bucket
+2023-01-20 13:39:03: INFO: __main__: Number of news grabbed from channel 'sharemed': 9
+2023-01-20 13:39:03: INFO: __main__: Saving data from channel 'sharemed' to database
+2023-01-20 13:39:03: INFO: __main__: Saving tmp files locally
+2023-01-20 13:39:03: INFO: __main__: Uploading files to S3 bucket
+2023-01-20 13:39:03: INFO: __main__: Number of news grabbed from channel 'oldlentach': 21
+2023-01-20 13:39:03: INFO: __main__: Saving data from channel 'oldlentach' to database
+2023-01-20 13:39:03: INFO: __main__: Saving tmp files locally
+2023-01-20 13:39:03: INFO: __main__: Uploading files to S3 bucket
+2023-01-20 13:39:04: INFO: __main__: Number of news grabbed from channel 'theinsider': 21
+2023-01-20 13:39:04: INFO: __main__: Saving data from channel 'theinsider' to database
+2023-01-20 13:39:04: INFO: __main__: Saving tmp files locally
+2023-01-20 13:39:04: INFO: __main__: Uploading files to S3 bucket
+2023-01-20 13:39:05: INFO: __main__: Number of news grabbed from channel 'radiosvoboda': 50
+2023-01-20 13:39:05: INFO: __main__: Saving data from channel 'radiosvoboda' to database
+2023-01-20 13:39:05: INFO: __main__: Saving tmp files locally
+2023-01-20 13:39:05: INFO: __main__: Uploading files to S3 bucket
+2023-01-20 13:39:06: INFO: __main__: Number of news grabbed from channel 'washingtonpost': 5
+2023-01-20 13:39:06: INFO: __main__: Saving data from channel 'washingtonpost' to database
+2023-01-20 13:39:06: INFO: __main__: Saving tmp files locally
+2023-01-20 13:39:06: INFO: __main__: Uploading files to S3 bucket
+2023-01-20 13:39:35: INFO: __main__: Reading configuration
+2023-01-20 13:39:35: INFO: __main__: Reading connection params from environment variables
+2023-01-20 13:39:35: INFO: __main__: Creating a telegram client
+2023-01-20 13:39:35: INFO: __main__: Creating an S3 session
+2023-01-20 13:39:35: INFO: __main__: Running channel message grabber
+2023-01-20 13:39:36: INFO: __main__: Number of news grabbed from channel 'bbcrussian': 45
+2023-01-20 13:39:36: INFO: __main__: Saving data from channel 'bbcrussian' to database
+2023-01-20 13:39:36: INFO: __main__: Saving tmp files locally
+2023-01-20 13:39:36: INFO: __main__: Uploading files to S3 bucket
+2023-01-20 13:39:37: INFO: __main__: Number of news grabbed from channel 'meduzalive': 64
+2023-01-20 13:39:37: INFO: __main__: Saving data from channel 'meduzalive' to database
+2023-01-20 13:39:37: INFO: __main__: Saving tmp files locally
+2023-01-20 13:39:37: INFO: __main__: Uploading files to S3 bucket
+2023-01-20 13:39:37: INFO: __main__: Number of news grabbed from channel 'rian_ru': 88
+2023-01-20 13:39:37: INFO: __main__: Saving data from channel 'rian_ru' to database
+2023-01-20 13:39:37: INFO: __main__: Saving tmp files locally
+2023-01-20 13:39:37: INFO: __main__: Uploading files to S3 bucket
+2023-01-20 13:39:38: INFO: __main__: Number of news grabbed from channel 'nytimes': 2
+2023-01-20 13:39:38: INFO: __main__: Saving data from channel 'nytimes' to database
+2023-01-20 13:39:38: INFO: __main__: Saving tmp files locally
+2023-01-20 13:39:38: INFO: __main__: Uploading files to S3 bucket
+2023-01-20 13:39:38: INFO: __main__: Number of news grabbed from channel 'varlamov_news': 13
+2023-01-20 13:39:38: INFO: __main__: Saving data from channel 'varlamov_news' to database
+2023-01-20 13:39:38: INFO: __main__: Saving tmp files locally
+2023-01-20 13:39:38: INFO: __main__: Uploading files to S3 bucket
+2023-01-20 13:39:38: INFO: __main__: Number of news grabbed from channel 'currenttime': 26
+2023-01-20 13:39:38: INFO: __main__: Saving data from channel 'currenttime' to database
+2023-01-20 13:39:38: INFO: __main__: Saving tmp files locally
+2023-01-20 13:39:38: INFO: __main__: Uploading files to S3 bucket
+2023-01-20 13:39:39: INFO: __main__: Number of news grabbed from channel 'novaya_pishet': 8
+2023-01-20 13:39:39: INFO: __main__: Saving data from channel 'novaya_pishet' to database
+2023-01-20 13:39:39: INFO: __main__: Saving tmp files locally
+2023-01-20 13:39:39: INFO: __main__: Uploading files to S3 bucket
+2023-01-20 13:39:39: INFO: __main__: Number of news grabbed from channel 'bazabazon': 17
+2023-01-20 13:39:39: INFO: __main__: Saving data from channel 'bazabazon' to database
+2023-01-20 13:39:39: INFO: __main__: Saving tmp files locally
+2023-01-20 13:39:39: INFO: __main__: Uploading files to S3 bucket
+2023-01-20 13:39:40: INFO: __main__: Number of news grabbed from channel 'sharemed': 9
+2023-01-20 13:39:40: INFO: __main__: Saving data from channel 'sharemed' to database
+2023-01-20 13:39:40: INFO: __main__: Saving tmp files locally
+2023-01-20 13:39:40: INFO: __main__: Uploading files to S3 bucket
+2023-01-20 13:39:40: INFO: __main__: Number of news grabbed from channel 'oldlentach': 21
+2023-01-20 13:39:40: INFO: __main__: Saving data from channel 'oldlentach' to database
+2023-01-20 13:39:40: INFO: __main__: Saving tmp files locally
+2023-01-20 13:39:40: INFO: __main__: Uploading files to S3 bucket
+2023-01-20 13:39:41: INFO: __main__: Number of news grabbed from channel 'theinsider': 21
+2023-01-20 13:39:41: INFO: __main__: Saving data from channel 'theinsider' to database
+2023-01-20 13:39:41: INFO: __main__: Saving tmp files locally
+2023-01-20 13:39:41: INFO: __main__: Uploading files to S3 bucket
+2023-01-20 13:39:42: INFO: __main__: Number of news grabbed from channel 'radiosvoboda': 50
+2023-01-20 13:39:42: INFO: __main__: Saving data from channel 'radiosvoboda' to database
+2023-01-20 13:39:42: INFO: __main__: Saving tmp files locally
+2023-01-20 13:39:42: INFO: __main__: Uploading files to S3 bucket
+2023-01-20 13:39:42: INFO: __main__: Number of news grabbed from channel 'washingtonpost': 5
+2023-01-20 13:39:42: INFO: __main__: Saving data from channel 'washingtonpost' to database
+2023-01-20 13:39:42: INFO: __main__: Saving tmp files locally
+2023-01-20 13:39:42: INFO: __main__: Uploading files to S3 bucket
