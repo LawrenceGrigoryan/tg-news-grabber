@@ -49,7 +49,7 @@ def getLogger(
 
 class DateTimeEncoder(json.JSONEncoder):
     """
-    Class serialize dates to JSON
+    Class to serialize dates to JSON
     """
     def default(self, o) -> json.JSONEncoder.default:
         if isinstance(o, datetime):
